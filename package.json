@@ -1,0 +1,23 @@
+{
+  "name": "ChatCat",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timmonsryan/ChatCat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timmonsryan/ChatCat/issues"
+  },
+  "homepage": "https://github.com/timmonsryan/ChatCat",
+  "dependencies": {
+    "express": "^4.2.0",
+    "hogan-express": "^0.5.2"
+  }
+}
