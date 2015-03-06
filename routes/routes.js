@@ -1,21 +1,19 @@
-module.exports = function(express, app) {
+module.exports = function(express, app, passport) {
 	var router = express.Router();
 
 	router.get('/', function(req, res, next) {
 		res.render('index.html', {title: 'Welcome to ChatCAT'});
 	})
 
+	router.get('/auth/facebook', passport.authenticate('facebook'));
+
+	router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+		successRedirect: '/chatrooms',
+		failRedirect: '/'
+	}))
+
 	router.get('/chatrooms', function(req, res, next) {
-		res.render('chatrooms.html', {title: 'Chatrooms'});
-	})
-
-	router.get('/setcolor', function(req, res, next) {
-		req.session.favColor = "Red";
-		res.send('Setting favorite color!');
-	})
-
-	router.get('/getcolor', function(req, res, next) {
-		res.send('Favorite Color: ' + (req.session.favColor===undefined ? "Not Found" : req.session.favColor));
+		res.render('chatrooms.html', {title: 'Chatrooms', user: req.user});
 	})
 
 	app.use('/', router);
